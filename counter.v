@@ -57,12 +57,12 @@ begin
 					total <= total + 1;
 				end else if(seven_add && seven_total <= 4*deck && total < 52*deck) begin
 					prev_add <= 2'b10;
-					seven_total <= large_total + 1;
+					seven_total <= seven_total + 1;
 					offset <= offset;
 					total <= total + 1;
 				end else if(small_add && small_total <= 24*deck && total < 52*deck) begin
 					prev_add <= 2'b01;
-					small_total <= large_total + 1;
+					small_total <= small_total + 1;
 					offset <= offset - 1;
 					total <= total + 1;
 				end
