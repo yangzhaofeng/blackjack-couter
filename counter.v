@@ -39,11 +39,11 @@ begin
 					offset <= offset + 1;
 				end
 				else if (prev_add == 2'b10 && seven_total > 0) begin
-					seven_total <= small_total - 1;
+					seven_total <= seven_total - 1;
 					offset <= offset;
 				end
 				else if (prev_add == 2'b11 && large_total > 0) begin
-					large_total <= small_total - 1;
+					large_total <= large_total - 1;
 					offset <= offset - 1;
 				end
 				total <= total - 1;
