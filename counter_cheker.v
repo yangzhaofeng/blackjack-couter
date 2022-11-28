@@ -13,10 +13,13 @@ module counter_chk (
 
 AST_OFFSET_MIN: assert property($signed(offset) >= $signed(-24*deck));
 AST_OFFSET_MAX: assert property($signed(offset) <= $signed(24*deck));
-AST_TOTAL_MAX: assert property(total <= 52*deck);
-AST_TOTAL_MUST_MAX: assert property(total >= counter.small_total && total >= counter.seven_total && total >= counter.large_total);
-AST_TOTAL_IS_SUM: assert property(total == counter.small_total + counter.seven_total + counter.large_total);
-AST_DECK_NO_ADD: assert property(if(total > 0) $stable(deck));
+AST_TOTAL_MAX: assert property(total <= 52*deck); // true
+AST_TOTAL_MUST_MAX_1: assert property(total >= counter.small_total); // true
+AST_TOTAL_MUST_MAX_2: assert property(total >= counter.seven_total); // true
+AST_TOTAL_MUST_MAX_3: assert property(total >= counter.large_total); // true
+AST_TOTAL_IS_SUM: assert property(total == counter.small_total + counter.seven_total + counter.large_total); // true
+AST_DECK_NO_ADD: assert property(if(total > 0) $stable(deck)); // true
+// total > 0 |-> $stable(deck)
 
 endmodule
 bind counter counter_chk counter_chk_inst(.*);
